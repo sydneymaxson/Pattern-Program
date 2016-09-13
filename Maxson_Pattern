@@ -1,0 +1,90 @@
+import javax.swing.JOptionPane;
+public class Maxson_Pattern 
+{
+
+	public static void main(String[] args) 
+	{
+		
+		String numberstring;
+		int number = 0;
+		String response;
+		int count = 0;
+		String outputStr = "";
+		boolean displaysequence = false; 
+		boolean validNumber = false;
+		
+		while (validNumber == false) 
+		{
+		   numberstring = JOptionPane.showInputDialog("Enter a positive number");
+
+		   try 
+		   {
+			   number = Integer.parseInt(numberstring); //converts numberstring to an int
+		   }
+		   catch(Exception ex)
+		   {
+		   JOptionPane.showMessageDialog(null, "Not a number", "Error", JOptionPane.INFORMATION_MESSAGE); // print out error here
+		   continue;
+		   }
+		
+	
+		   if (number <= 0)
+		   {
+			   JOptionPane.showMessageDialog(null, "Not a positive number", "Error", JOptionPane.INFORMATION_MESSAGE);
+			   continue;
+		   }
+			validNumber = true;
+			
+		}
+				
+		
+		response = JOptionPane.showInputDialog("Do you want to see the sequence of numbers? (Y)es or (N)o");
+		
+		response = response.toLowerCase();
+			
+			if (response.equals("yes") || response.equals("y"))
+			{
+				displaysequence = true;
+			
+			}
+			
+			
+			
+			while(number != 1)
+			{
+				
+				if((number%2) == 0){ //number is even
+					number = number/2;
+					count++;
+					
+					if (displaysequence == true) 
+					{
+						outputStr = outputStr + number + " ";	
+					}
+					
+				}
+				
+				else
+				{ 
+					number = ((number * 3) +1);
+					count++;
+					
+					if (displaysequence == true) 
+					{
+						outputStr = outputStr + number + " ";
+					}
+					
+				}
+				
+			}
+			if (displaysequence == true)
+			{
+				JOptionPane.showMessageDialog(null, outputStr + "\nIt took " + 
+			     count + " terms to get to 1"  , "Sequence", JOptionPane.INFORMATION_MESSAGE);
+			}
+			else 
+			{
+				JOptionPane.showMessageDialog(null, "It took " + count + " terms to get to 1" , "Sequence", JOptionPane.INFORMATION_MESSAGE);
+			}
+	}
+}
